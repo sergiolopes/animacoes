@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Animações FLIP</title>
+
+    <style>
+        /* estilo */
+        *, *:after, *:before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background: #f7fafb;
+            color: #333;
+            font-family: Open Sans;
+            margin: 20px;
+        }
+
+        .lista {
+            list-style-type: none;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .cartao {
+            background-color: white;
+            box-shadow: 0 0 4px rgba(0,0,0,0.4);
+            font-size: 14px;
+            margin: 10px;
+            line-height: 100px;
+            transform-origin: 0 0;
+            display: inline-block;
+            width: calc(100% - 20px);
+            vertical-align: middle;
+            cursor: pointer;
+        }
+            .cartao img {
+                vertical-align: middle;
+                margin: 0 10px;
+                width: 45px;
+            }
+
+            .cartao span {
+            	display: inline-block;
+            	width: calc(100% - 92px);
+            	line-height: 1.3;
+            	vertical-align: middle;
+            }
+
+            .cartao:after {
+            	content: '✕';
+            	display: inline-block;
+            	margin: 2px 2px 0 0;
+            	line-height: 1;
+            	color: #777;
+            	font-size: 10px;
+            	vertical-align: top;
+            	border-radius: 50%;
+            	padding: 4px;
+            }
+
+            .cartao:hover:after {
+            	
+            	background: #f0f0f0;
+            }
+
+		.logo {
+			display: block;
+			height: 35px;
+			width: 75px;
+			margin: 0 auto 20px;
+		}
+
+        h1 {
+        	font-size: 17px;
+        	text-align: center;
+        }
+
+        h2 {
+        	font-size: 15px;
+        	color: #777;
+        	font-weight: normal;
+        	text-align: center;
+        }
+
+        @media(min-width: 600px) {
+            .cartao {
+                width: calc(50% - 20px);
+            }
+            h1 { font-size: 19px;}
+        }
+
+        @media(min-width: 900px) {
+            .cartao {
+                width: calc(33.3% - 20px);
+            }
+            h1 { font-size: 21px;}
+        }
+
+
+        @media(min-width: 1200px) {
+            .cartao {
+                width: calc(25% - 20px);
+            }
+            h1 { font-size: 24px;}
+        }
+
+
+        /* comportamento */
+        .cartao.remove {
+            position: absolute;
+        }
+
+
+        /* animacao */
+        .anima .cartao {
+            transition: 500ms ease-out;
+        }
+        .anima .cartao.remove {
+            opacity: 0;
+        }
+
+		/* otimizacao */
+		.cartao.remove,
+		.cartao.remove ~ .cartao {
+			will-change: transform;
+		}
+
+    </style>
+</head>
+<body>
+
+	<img src="https://www.alura.com.br/assets/img/alura-logo.1472136844.svg" class="logo">    
+	<h1>O que você quer estudar hoje?</h1>
+	<h2>Remova cursos que não tem interesse</h2>
+
+    <ul class="lista">
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/javascript-es6-orientacao-a-objetos-parte-1.svg">
+            <span>JavaScript avançado:  ES6, orientação a objetos e padrões de projetos</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/otimizacao-performance-web.svg">
+            <span>Performance Web I: otimizando o front-end</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/node-js.svg">
+            <span>Node.js: Inovando com Javascript no backend</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/gulp.svg">
+            <span>Gulp: automação de tarefas front-end</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/web-design-responsivo.svg">
+            <span>Web Design Responsivo: Páginas que se adaptam do mobile ao desk</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/mean-javascript.svg">
+            <span>MEAN Stack: criando aplicações completas com Javascript</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/performance-http2-critical-path.svg">
+            <span>Performance Web II: Critical Path, HTTP/2 e Resource Hints</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/introducao-ao-jquery.svg">
+            <span>jQuery I: Introdução à biblioteca campeã de JavaScript</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/introducao-html-css.svg">
+            <span>HTML5 e CSS3 I: Suas primeiras páginas da Web</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/fundamentos-http.svg">
+            <span>HTTP: Entendendo a web por baixo dos panos</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/angularjs-mvc.svg">
+            <span>AngularJS: crie webapps poderosas</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/bootstrap-criacao-single-page-responsiva.svg">
+            <span>Bootstrap: criação de uma single-page responsiva</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/meteorjs.svg">
+            <span>Meteor: Crie single page applications com JavaScript</span>
+
+        <li class="cartao">
+            <img src="https://www.alura.com.br/assets/api/cursos/sass.svg">
+            <span>Sass e Compass: Descomplicando o CSS</span>
+
+    </ul>
+
+    <script>
+        var lista = document.querySelector('.lista');
+        var cartoes = Array.prototype.slice.call(document.querySelectorAll('.cartao'));
+
+        cartoes.forEach((cartao)=> cartao.addEventListener('click', cartaoOnClick));
+
+        function cartaoOnClick() {
+			preparaAnimacao(this);
+			requestAnimationFrame(disparaAnimacao);
+			this.addEventListener('transitionend', aposAnimacao);
+        }
+
+		function preparaAnimacao(cartaoARemover) {
+			// (opcional) corner case pra multiplas colunas
+			var posCartaoARemover = cartaoARemover.getBoundingClientRect();
+			var posLista = lista.getBoundingClientRect();
+			cartaoARemover.style.top = posCartaoARemover.top - posLista.top - 10 + 'px';
+			cartaoARemover.style.left = posCartaoARemover.left - posLista.left - 10 + 'px';
+
+			// pega posicoes dos elementos antes e depois da modificação
+			var posInicial = cartoes.map((cartao) => cartao.getBoundingClientRect());
+			cartaoARemover.classList.add('remove');
+
+			// aplica um transform pra colocar cada cartao de volta no lugar dele
+			cartoes.forEach((cartao, i) => {
+				var posFinal = cartao.getBoundingClientRect();
+				var x = posInicial[i].left - posFinal.left;
+				var y = posInicial[i].top - posFinal.top;
+				cartao.style.transform = `translate(${x}px, ${y}px)`;
+			});
+        }
+
+		function disparaAnimacao() {
+			cartoes.forEach((cartao) => cartao.style.transform = '' );
+			lista.classList.add('anima');
+		}
+
+		function aposAnimacao() {
+			lista.classList.remove('anima');
+			this.remove();
+		}
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Thread</title>
+    <style>
+    html {
+      width: 100%;
+      height: 100%;
+      background: #3399CC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    body {
+        text-align: center;
+    }
+    label {
+        background: white;
+        text-align: center;
+        padding: 10px;
+    }
+    button {
+        font-size: 16px;
+        padding: 5px;
+    }
+    </style>
+</head>
+<body>
+<img src="sonic.gif">
+
+<label><input type="checkbox"> Clique-me</label><br><br>
+<!--<button onclick="fazAlgoPesadoMaisImportante()">Faz algo pesado mais importante</button>-->
+
+<script>
+function fazAlgo() {
+    for (var i = 0; i < 100000; i++) {
+        Math.random();
+    }
+    console.log('fiz algo');
+}
+function fazAlgoPesadoMaisImportante() {
+    var j = 0;
+    function fazOutroBloco(){
+        if (j++ < 100) {
+            for (var i = 0; i < 250000; i++) {
+                Math.random();
+            }
+            setTimeout(fazOutroBloco, 0);
+        }
+    }
+    fazOutroBloco();
+}
+</script>
+
+<script type="demo">
+// ex1
+for (var i = 0; i < 1000; i++) fazAlgo();
+
+// ex2
+var i = 0;
+function fazUmBloco(){
+    if (i++ < 1000) {
+        fazAlgo();
+        setTimeout(fazUmBloco, 0);
+    }
+}
+fazUmBloco();
+
+// ex3
+var i = 0;
+function fazUmBloco(){
+    if (i++ < 1000) {
+        fazAlgo();
+        requestAnimationFrame(fazUmBloco);
+    }
+}
+fazUmBloco();
+
+// ex4
+var i = 0;
+function fazUmBloco(deadline){
+    if (deadline.timeRemaining() > 30 && i++ < 1000) {
+        fazAlgo();
+    }
+    requestIdleCallback(fazUmBloco);
+}
+requestIdleCallback(fazUmBloco);
+
+// ex5
+new Worker('worker.js');
+
+</script>
+</body>
+</html>

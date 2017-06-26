@@ -34,7 +34,6 @@
             transform-origin: 0 0;
             width: calc(100% - 20px);
             vertical-align: middle;
-            cursor: pointer;
         }
             .cartao img {
                 vertical-align: middle;
@@ -49,8 +48,7 @@
             	vertical-align: middle;
             }
 
-            .cartao:after {
-            	content: '✕';
+            .cartao button {
             	display: inline-block;
             	margin: 2px 2px 0 0;
             	line-height: 1;
@@ -59,9 +57,12 @@
             	vertical-align: top;
             	border-radius: 50%;
             	padding: 4px;
+                border: 0;
+                background: none;
+                cursor: pointer;
             }
 
-            .cartao:hover:after {	
+            .cartao button:hover {	
             	background: #f0f0f0;
             }
 
@@ -141,58 +142,72 @@
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/javascript-es6-orientacao-a-objetos-parte-1.svg">
             <span>JavaScript avançado:  ES6, orientação a objetos e padrões de projetos</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/otimizacao-performance-web.svg">
             <span>Performance Web I: otimizando o front-end</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/node-js.svg">
             <span>Node.js: Inovando com Javascript no backend</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/gulp.svg">
             <span>Gulp: automação de tarefas front-end</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/web-design-responsivo.svg">
             <span>Web Design Responsivo: Páginas que se adaptam do mobile ao desk</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/mean-javascript.svg">
             <span>MEAN Stack: criando aplicações completas com Javascript</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/performance-http2-critical-path.svg">
             <span>Performance Web II: Critical Path, HTTP/2 e Resource Hints</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/introducao-ao-jquery.svg">
             <span>jQuery I: Introdução à biblioteca campeã de JavaScript</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/introducao-html-css.svg">
             <span>HTML5 e CSS3 I: Suas primeiras páginas da Web</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/fundamentos-http.svg">
             <span>HTTP: Entendendo a web por baixo dos panos</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/angularjs-mvc.svg">
             <span>AngularJS: crie webapps poderosas</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/bootstrap-criacao-single-page-responsiva.svg">
             <span>Bootstrap: criação de uma single-page responsiva</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/meteorjs.svg">
             <span>Meteor: Crie single page applications com JavaScript</span>
+            <button>✕</button>
 
         <li class="cartao">
             <img src="https://www.alura.com.br/assets/api/cursos/sass.svg">
             <span>Sass e Compass: Descomplicando o CSS</span>
+            <button>✕</button>
 
     </ul>
 
@@ -200,12 +215,13 @@
         var lista = document.querySelector('.lista');
         var cartoes = Array.prototype.slice.call(document.querySelectorAll('.cartao'));
 
-        cartoes.forEach((cartao)=> cartao.addEventListener('click', cartaoOnClick));
+        cartoes.forEach((cartao) => cartao.querySelector('button').addEventListener('click', cartaoOnClick));
 
         function cartaoOnClick() {
-			preparaAnimacao(this);
+            var cartao = this.parentElement;
+			preparaAnimacao(cartao);
 			requestAnimationFrame(disparaAnimacao);
-			this.addEventListener('transitionend', aposAnimacao);
+			cartao.addEventListener('transitionend', aposAnimacao);
         }
 
 		function preparaAnimacao(cartaoARemover) {

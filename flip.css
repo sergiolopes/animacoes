@@ -110,9 +110,9 @@ h2 {
 }
 
 .cartao.removeRuim {
-    transition: margin 500ms, opacity 500ms;
-    margin-bottom: -110px;
+    margin-bottom: -100px;
     opacity: 0;
+    transition: all 500ms;
 }
 
 

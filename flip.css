@@ -10,6 +10,7 @@ html {
     color: #333;
     font-family: Open Sans;
     margin: 20px;
+    min-height: 2000px;
 }
 
 .lista {
@@ -24,6 +25,7 @@ html {
     font-size: 14px;
     margin: 10px;
     line-height: 100px;
+    height: 100px;
     transform-origin: 0 0;
     width: calc(100% - 20px);
     vertical-align: middle;
@@ -125,7 +127,10 @@ h2 {
 }
 
 /* otimizacao */
-.cartao.remove,
-.cartao.remove ~ .cartao {
+.cartao {
+    contain: strict;
     will-change: transform;
+}
+.cartao.remove {
+    will-change: transform, opacity;
 }

@@ -14,8 +14,8 @@ function preparaAnimacao(cartaoARemover) {
     // (opcional) corner case pra multiplas colunas
     var posCartaoARemover = cartaoARemover.getBoundingClientRect();
     var posLista = lista.getBoundingClientRect();
-    cartaoARemover.style.top = posCartaoARemover.top - posLista.top - 10 + 'px';
-    cartaoARemover.style.left = posCartaoARemover.left - posLista.left - 10 + 'px';
+    cartaoARemover.style.top = posCartaoARemover.top - posLista.top + 'px';
+    cartaoARemover.style.left = posCartaoARemover.left - posLista.left + 'px';
 
     // pega posicoes dos elementos antes e depois da modificação
     var posInicial = cartoes.map((cartao) => cartao.getBoundingClientRect());

@@ -106,6 +106,8 @@ h2 {
 /* comportamento */
 .cartao.remove {
     position: absolute;
+    margin: 0;
+}
 
 .cartao.removeRuim {
     transition: margin 500ms, opacity 500ms;

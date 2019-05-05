@@ -1,0 +1,9 @@
+.pulsa {
+    animation: pulsa 1s ease alternate infinite;
+}
+
+@keyframes pulsa {
+    to {
+        font-size: 0;
+    }
+}

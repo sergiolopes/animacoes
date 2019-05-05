@@ -1,0 +1,9 @@
+.pisca { 
+    animation: pisca 800ms frames(2) infinite; 
+}
+
+@keyframes pisca {
+    to { 
+        visibility: hidden 
+    }
+}
